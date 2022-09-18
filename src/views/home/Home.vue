@@ -4,19 +4,13 @@
       <span >购物街</span>
     </template>
   </nav-bar>
-  <Swiper>
-    <SwiperItem v-for="item in banners">
-      <a :href="item.link">
-        <img :src="item.image"/>
-      </a>
-    </SwiperItem>
-  </Swiper>
+  <BannerSwiper :banners='banners'/>
 </template>
 
 <script>
 import NavBar from '@/components/common/navbar/NavBar.vue'
 import {getHomeMultiData} from '@/network/home.js'
-import {Swiper,SwiperItem} from '@/common/swiper/index'
+import BannerSwiper from '@/views/home/BannerSwiper.vue'
 
 export default {
   name: 'HOME',
@@ -28,8 +22,7 @@ export default {
   },
   components: {
     NavBar,
-    Swiper,
-    SwiperItem
+    BannerSwiper
 },
   props: {},
   computed: {},
