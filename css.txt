@@ -1,0 +1,75 @@
+选择器{
+	声明1;
+	声明2;
+	声明3;
+}
+每一个声明最好使用分号结尾
+优先级：就近原则
+
+选择器
+	基本选择器（标签选择器）：选择一类 标签 {}
+	类选择器：跨标签   .class {}
+	ID选择器，id必须全局唯一   #id {}
+	优先级：不遵循就近原则 id>class>标签
+
+层次选择器：
+	后代选择器 body p{}
+	父子选择器：body>p{}
+	相邻兄弟选择器,只有一个，相邻乡下：.class+p{}
+	通用兄弟选择器，当前选中元素的向下的所有兄弟元素：.active~p{}
+	
+伪类选择器
+	ul li:first-child
+	ul li:last-child
+	p:nth-child(1):定位到父元素，选择父元素下的第一个元素，并且时p元素时生效
+	a:hover:鼠标悬停 
+	a:active:鼠标按住
+
+属性选择器
+	a[id]：a标签中存在id的元素
+	a[id=first]:a标签中id=first的元素
+	a[class*="link"]   =：绝对等于  *=包含
+	
+重点要突出的字用span 标签包裹起来
+字体样式：font-family:字体 font-weight:粗体
+文本样式：text-align:对齐 text-indent:首行缩进 line-height:行高  使行高和块高度一致，就可以上下居中 vertical-align:水平对齐，要有参照物，需两个元素  text-decoration:划线 text-shadow:文本阴影
+列表样式：list-style:(none:去掉点 circle：空心圆 decimal:数字)
+背景样式：backgroud-image:背景图片  background-repeat:repeat-x 背景平铺方式 backgroud-position:图片定位
+
+div 
+	边框border:粗细，样式，颜色 1px solid red
+	圆角边框border-radius：顺时针，左上开始，值是圆的半径
+	居中：margin：0 auto
+	块级元素：独占一行
+		h1-h6 p  div 列表
+	行内元素
+		span a img ...
+	行内元素可以包裹在块级元素中，但是反过来就不可以
+	display: 	inline-block:既拥有了block元素可以设置width和height的特性，又保持了inline元素不换行的特性。
+	float:浮动
+	clear:both  元素两边不允许有浮动元素
+	浮动后父元素塌陷问题：
+		1、给父元素设定高度
+		2、增加一个空div，清除浮动  clear:both padding:0 margin:0
+		3、在父元素中增加overflow:hidden  但是文本超出时就会有问题
+		4、伪类，类似于加div，但是以样式编程的方式实现：#father:after{content:'';display:block;clear:both}
+		
+定位：
+	相对定位：position:relative  上下左右  相对于原来的自己，原来的盒子仍然在标准文档流中
+	绝对定位：position:absolute  基于xxx定位 ，不在标准的文档流中，原来的位置不会被保留
+		没有父级元素定位的前提下，相对于浏览器定位
+		假设父级元素存在定位，我们通常会相对于父级元素偏移  通常父级元素设置相对定位，然后再设置绝对定位
+	固定定位：position:fixed  比如导航栏
+z-index属性设置元素的堆叠顺序。拥有更高堆叠顺序的元素总是会处于堆叠顺序较低的元素的前面。
+
+display:flex
+flex:1 ==> flex:1 1 auto  分别代表 权重，收缩规则，主轴方向上的初始大小
+将父容器的display设置为flex，flex-direaction设置为row，min-height设置为100%；再将需要伸缩的content部分设置flex:1。
+
+box-shadow 设置阴影，通常用于边界出有渐进的感觉  X轴位移右 Y轴位移下 阴影大小 阴影颜色   颜色可以用RGBA值，RGBA值的好处是，它多了一个Alpha透明值
+去掉图片下面的空白间隙：vertical-align:middle  也可以直接在img标签上写一个display:block;属性
+
+在行内元素中有几个特殊的标签，<img/>,<input/>,<td/>,可以设置它们的宽高度以及对齐属性
+
+行内元素：a,b,strong,span,img,label,button,input,select,textarea
+块级元素：header,form,ul,ol,table,article,div,hr,aside,figure,canvas,video,audio,footer

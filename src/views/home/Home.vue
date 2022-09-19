@@ -5,12 +5,14 @@
     </template>
   </nav-bar>
   <BannerSwiper :banners='banners'/>
+  <HomeRecommend :recommend='recommend' />
 </template>
 
 <script>
 import NavBar from '@/components/common/navbar/NavBar.vue'
 import {getHomeMultiData} from '@/network/home.js'
 import BannerSwiper from '@/views/home/BannerSwiper.vue'
+import HomeRecommend from './HomeRecommend.vue';
 
 export default {
   name: 'HOME',
@@ -22,7 +24,8 @@ export default {
   },
   components: {
     NavBar,
-    BannerSwiper
+    BannerSwiper,
+    HomeRecommend
 },
   props: {},
   computed: {},
@@ -32,6 +35,8 @@ export default {
       
       this.banners=res.data.banner.list;
       this.recommend=res.data.recommend.list
+      console.log(this.recommend);
+      
     })
   },
   mounted() {}
